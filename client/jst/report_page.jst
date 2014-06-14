@@ -1,0 +1,18 @@
+<table class="table table-striped">
+  <tr>
+    <th><%- Texts.get('ranking/username')%></th>
+    <th><%- Texts.get('ranking/source')%></th>
+  </tr>
+<%  _.each(d.players,function(player){ %>
+  <tr>
+    <td><%- player.name %></td>
+    <td>
+<%   if(player.source) { %>
+<textarea><%- player.source %></textarea>
+<%   } else { %>
+<%- Texts.get('ranking/closed_soure') %>
+<%   } %>
+    </td>
+  </tr>
+<% }) %>
+</table>

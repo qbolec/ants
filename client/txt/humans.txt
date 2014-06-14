@@ -1,0 +1,6 @@
+/*TEAM*/
+Idea, Vision, Flow, Wireframes : Bartek Kobyłecki, Jakub Łopuszański
+Architecture, Implementation, PHP, JS, CSS : Jakub Łopuszański
+Imagery : Creactive Commons pictures found on google, pixabay.com and http://search.creativecommons.org edited in Gimp by Jakub Łopuszański
+Icons : Icons from http://glyphicons.com/ found in Bootstrap
+Content : Various mathematicians, Bogusław ,found on youtube, provided by numerous users

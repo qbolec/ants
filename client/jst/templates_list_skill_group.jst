@@ -1,0 +1,25 @@
+<td colspan="5">
+  <div class="when-edit form-horizontal" role="form">
+    <div class="form-group">
+      <div class="col-xs-8">
+        <input type=text class="form-control" value="<%- d.name %>">
+      </div>
+      <div class="col-xs-2"><div class="subject_selector">placeholder</div></div>
+      <div class="col-xs-2">
+        <button class="btn btn-primary save"><%- Texts.get('templates_list/skill/save/label') %></button>
+        <button class="btn btn-default cancel"><%- Texts.get('templates_list/skill/cancel/label') %></button>
+      </div>
+    </div>
+  </div>
+  <div class="when-view view">
+    <div class="name col-xs-10 name"><%- d.name %></div>
+    <div class="col-xs-2"><div class="selected_subject">placeholder2</div></div>
+  </div>
+  <div class="when-selectable"><span class="name"><%- d.name %></span>
+    <div class="form-horizontal checkbox-overlay" role="form">
+      <div class="checkbox">
+        <label><input type="checkbox" name="easier"><%- Texts.get('templates_list/skill/easier/label') %></label>
+      </div>
+    </div>
+  </div>
+</td>

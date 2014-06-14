@@ -1,0 +1,5 @@
+<option value="null" <%- (null === d.task_template.skill_id)?'selected':''%>><%- Texts.get('skill_selector/none/label') %></option>
+<% _.each(d.skills,function(skill){ %>
+  <option value="<%- skill.id %>" <%- (skill.id === d.task_template.skill_id)?'selected':''%>><%- skill.name %></option>
+<% }) %>
+<option value="-1"><%- Texts.get('skill_selector/new/label') %></option>

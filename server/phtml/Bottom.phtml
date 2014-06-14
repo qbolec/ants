@@ -1,0 +1,52 @@
+<script type="text/javascript"> 
+var ants={
+  options : <?php echo JSON::encode($params['options']);?>
+
+};
+</script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  elements:['jax-math-element'],
+  tex2jax: {
+    displayMath: [ ['$$','$$'] ],
+    inlineMath: [ ['$','$'] ],
+    processEscapes: true
+  },
+  skipStartupTypeset:true,
+  positionToHash:false,
+  messageStyle:"none",
+  showProcessingMessages:false,
+  "HTML-CSS": { availableFonts: ["TeX"] }
+});
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_SVG" type="text/javascript"></script>
+<?php
+$scripts = Arrays::concat(array(
+  'lib/underscore.js',
+  'lib/json2.js',
+  'lib/jquery-1.10.2.min.js',
+  'lib/moment-with-langs.min.js',
+  'lib/modernizr.custom.50579.js',
+  'lib/js-webshim/minified/polyfiller.js',
+  'lib/backbone.js',
+  'lib/bootstrap.min.js',
+  'lib/raphael.js',
+  'lib/URI.min.js',
+  'lib/ace/src-noconflict/ace.js',
+  'lib/sexp/sexp.js',
+  'lib/sexp/sexp_parser.js',
+  'lib/intro.js',
+  'lib/d3.js',
+  'lib/jquery.viewport.mini.js',
+),$params['scripts']);
+foreach($scripts as $src){
+?>
+  <script src="http://static.ants.vanisoft.pl/js/<?php $this->out($src) ?>" type="text/javascript"></script>
+<?
+}
+?>
+<script type="text/javascript">
+  $.webshims.polyfill();
+</script>
+</body>
+</html>

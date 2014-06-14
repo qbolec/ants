@@ -1,0 +1,2 @@
+#!/bin/bash
+php -d include_path=~/ants/app/includes "$@"

@@ -1,0 +1,4 @@
+<option value="null" <%- (null === d.skill.subject_id)?'selected':''%>><%- Texts.get('subject_selector/none/label') %></option>
+<% _.each(d.subjects,function(subject){ %>
+  <option value="<%- subject.id %>" <%- (subject.id === d.skill.subject_id)?'selected':''%>><%- subject.label %></option>
+<% }) %>

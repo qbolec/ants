@@ -1,0 +1,41 @@
+<div>
+  <div class="source"><%- d.source %></div>
+  <div class="examples">
+    <labelTexts.get('task_template_edit/examples/label') </label>
+    <p>
+      <span>~2 = 0-2</span>
+      <span>if 3 > 2 then "pewne" else "dziwne"</span>
+      <span>x -> x*x</span>
+      <span>r -> pi=3.14; 2*pi*r </span>
+      <span>"ala" | " ma" = "ala ma"</span>
+      <span>min 1 2 = 1</span>
+      <span>max 1 2 = 2</span>
+      <span>pkt = {x:7, y:2}; pkt.x</span>
+      <span>ln (pow E 10)=10</span>
+      <span>sin PI = 0</span>
+      <span>asin 0 = 0</span>
+      <span>log 2 8 = 3</span>
+      <span>abs (-8) = 8</span>
+      <span>sgn (-8) = (-1)</span>
+      <span>ceil (-7.6) = (-7)</span>
+      <span>floor (-7.6) = (-8)</span>
+      <span>round (-7.6) = (-8)</span>
+      <span>cos PI = (-1) </span>
+      <span>acos (-1) = PI</span>
+      <span>sqrt 9 = 3</span>
+      <span>tan(PI/4) = 1</span>
+      <span>atan 1 = PI/4</span>
+      <span>atan2 20 0 = PI/2</span>
+      <span>gcd 15 35 = 5</span>
+      <span>lcm 6 15 = 30</span>
+    </p>
+  </div>
+  <label><%- Texts.get('editor/nick') %><input type="text" class="nick" value="<%- d.nick%>"></label>
+  <label><input type="checkbox" class="is_open_source" <%- d.is_open_source ? 'checked' :''%>><%- Texts.get('editor/open_source') %></label>
+  <button class="save btn btn-success"><%- Texts.get('task_template_edit/save/label') %></button>
+  <p class="bg-warning warning_info">
+  Tu będą warningi
+  </p>
+  <p class="bg-danger error_info">
+  </p>
+</div>

@@ -1,0 +1,5 @@
+<ul>
+<% _.each(d.events, function(event){ %>
+  <li><img src="<%- event.src %>"> <span class="date"><%- event.date %></span> <%- event.text %> <b class="<%- event.kind %>"><%- event.kind=='sad'?':(':':)' %></b>
+<% }); %>
+</ul>

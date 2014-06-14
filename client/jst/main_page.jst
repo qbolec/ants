@@ -1,0 +1,19 @@
+<% if(d.auctions && d.auctions.length>0){ %>
+<p>Choose one of auctions below</p>
+<ul>
+<%   _.each(d.auctions, function(auction){ %>
+  <li>
+    <a href="#auction/<%- auction.id %>"><%- auction.name %></a>
+    <i><%- auction.description %></i>
+  </li>
+<%  }); %>
+</ul>
+<p>or <button class="btn btn-default create">Create new auction</button></p>
+<% }else{ %>
+<p>
+You are not participating in any auctions yet.
+Either join one by clicking a special link sent to you by a creator of an auction,
+or 
+<button class="btn btn-default btn-lg create">Create new auction</button> yourself</p>
+</p>
+<% } %>

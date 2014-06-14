@@ -1,0 +1,29 @@
+<nav class="active_only navbar navbar-inverse navbar-static-top" role="navigation">
+  <!-- Brand and toggle get grouped for better mobile display -->
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+  </div>
+
+  <!-- Collect the nav links, forms, and other content for toggling -->
+  <div class="collapse navbar-collapse navbar-ex1-collapse">
+    <ul class="nav navbar-nav navbar-right">
+      <li class="on_site-login"><a href="#login" class="login unless-regular unless-temporary"><%- Texts.get('navbar/login') %></a></li>
+      <li class="on_site-login"><a href="#login" class="login unless-regular unless-tour unless-anonymous"><%- Texts.get('navbar/register') %></a></li>
+      <li><a href="#logout" class="logout unless-anonymous unless-tour unless-temporary"><%- Texts.get('navbar/logout') %></a></li>
+      <li><a href="#" class="unless-anonymous"><%- Texts.get('navbar/rules') %></a></li>
+      <li><a href="#arena" class="unless-anonymous"><%- Texts.get('navbar/arena') %></a></li>
+      <li><a href="#edit" class="unless-anonymous"><%- Texts.get('navbar/edit') %></a></li>
+      <li><a href="#report" class="unless-anonymous"><%- Texts.get('navbar/report') %></a></li>
+    </ul>
+    <p class="navbar-right navbar-text unless-anonymous unless-regular notice-temporary"><%- Texts.get('navbar/authentication_status/temporary') %></p>
+    <p class="navbar-right navbar-text unless-tour unless-temporary unless-regular"><%- Texts.get('navbar/authentication_status/anonymous') %></p>
+    <p class="navbar-right navbar-text username unless-tour unless-temporary unless-anonymous"></p>
+    <p class="navbar-right navbar-text unless-anonymous unless-regular unless-tour"><a href="#logout" class="logout">.</a></p>
+
+  </div><!-- /.navbar-collapse -->
+</nav>

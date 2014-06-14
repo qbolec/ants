@@ -1,0 +1,20 @@
+<div class="alert alert-info unless-regular unless-tour unless-anonymous">
+<%= Texts.get('login/temporary_upgrade_info.html') %>
+</div>
+<form role="form">
+  <div class="form-group">
+    <label for="login-email"><%- Texts.get('login/email/label') %></label>
+    <input id="login-email" required type="email" value="<%- d.email %>" name="email" placeholder="<%- Texts.get('login/email/placeholder') %>" class="email form-control input-lg">
+    <p class="form_hint"><%- Texts.get('login/email/hint') %></p>
+  </div>
+  <div class="form-group">
+    <label for="login-password"><%- Texts.get('login/password/label') %></label>
+    <input id="login-password" type="password" required pattern=".+" value="<%- d.password %>" name="password" placeholder="<%- Texts.get('login/password/placeholder') %>" class="password form-control input-lg">
+    <p class="form_hint"><%- Texts.get('login/password/hint') %></p>
+  </div>
+  <div class="form-group">
+    <input type="button" value="<%- Texts.get('login/login/label') %>" class="login btn btn-primary btn-lg">
+    <input type="button" value="<%- Texts.get('login/create_account/label') %>" class="create_account btn btn-default btn-lg">
+    <input type="button" value="<%- Texts.get('login/recover/label') %>" class="recover btn btn-default btn-lg">
+  </div>
+</form>

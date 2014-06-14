@@ -1,0 +1,6 @@
+<% if(d.only){ %>
+<li class="only"><span class="modality"><%- Texts.get('learning_scope/only') %></span><span class="name"><%- d.only.label %></span><button type="button" data-subject-id="<%- d.only.id %>" class="close" aria-hidden="true">&times;</button></li>
+<% } %>
+<% _.each(d.ignored,function(subject){ %>
+<li class="ignored"><span class="modality"><%- Texts.get('learning_scope/ignored') %></span><span class="name"><%- subject.label %></span><button type="button" data-subject-id="<%- subject.id %>" class="close" aria-hidden="true">&times;</button></li>
+<% }) %>

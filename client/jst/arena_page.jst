@@ -1,0 +1,14 @@
+<div>
+<label><%- Texts.get('arena/player1/label')%><select class="form-control player1"></select></label>
+<label><%- Texts.get('arena/player2/label')%><select class="form-control player2"></select></label>
+<label><%- Texts.get('arena/map/label')%><select class="form-control map"></select></label>
+<label><%- Texts.get('arena/fps/label')%><input type="text" class="form-control fps" value=20></label>
+<button class="btn btn-primary run"><%- Texts.get('arena/run/label')%></button>
+</div>
+<canvas class="viewport"></canvas>
+<table>
+<tr><th></th><th><%- Texts.get('arena/red') %></th><th><%- Texts.get('arena/blue') %></th></tr>
+<tr class="score"><td><%- Texts.get('arena/score') %></td><th class="player1"></th><th class="player2"></th></tr>
+<tr class="food"><td><%- Texts.get('arena/food') %></td><th class="player1"></th><th class="player2"></th></tr>
+<tr class="ants"><td><%- Texts.get('arena/ants') %></td><th class="player1"></th><th class="player2"></th></tr>
+</table>

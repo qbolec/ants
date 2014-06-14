@@ -1,0 +1,10 @@
+<label><input type="checkbox">
+<span class="id"><%- d.material.id %></span>
+<span title="<%- d.material.description %>" class="title"><%- d.material.title %></span>
+<a class="link" href="http://www.youtube.com/watch?v=<%- d.material.youtube_id %>"><%- Texts.get('material/video/watch')%></a>
+<ul>
+<% _.each(d.skills_ids, function(skill_id){ %>
+  <li><%- skill_id %></li>
+<% }); %>
+</ul>
+</label>

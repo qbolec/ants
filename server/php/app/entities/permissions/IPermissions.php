@@ -1,0 +1,17 @@
+<?php
+interface IPermissions extends INamedEntities
+{
+  const VIEWING_PRIVATE_USER_DATA = 1;
+  const EDITING_PRIVATE_USER_DATA = 2;
+  const CREATING_TASK_TEMPLATE = 3;
+  const CREATING_SKILL = 4;
+  const MANAGING_ANY_ROLE = 5;
+  const EDITING_OWN_SKILL = 6;
+  const EDITING_ANY_SKILL = 7;
+  const EDITING_OWN_TASK_TEMPLATE = 8;
+  const EDITING_ANY_TASK_TEMPLATE = 9;
+  const VIEWING_ANY_SKILL = 10;
+  const VIEWING_ANY_TASK_TEMPLATE = 11;
+  const EDITING_MATERIAL_SKILL_RELEVANCE = 12;
+}
+?>

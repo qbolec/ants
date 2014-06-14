@@ -1,0 +1,12 @@
+<td class="template_id"><%- d.id %></td>
+<td><%- d.snippet || Texts.get('task_template/thumbnail/missing_snippet') %></td>
+<td  class="at" title="<%-  moment.unix(d.edited_at).lang('pl').calendar()  %>"><%-  moment.unix(d.edited_at).lang('pl').fromNow()  %></td>
+<td class="email"><% if(d.editor.email) { %>
+  <span class="username"><%- d.editor.email.replace(/@.*$/,'')%></span><span class="server"><%- d.editor.email.replace(/^[^@]*/,'')%></span>
+    <% } else { %>
+    <%- d.editor.id %>
+    <% } %>
+</td>
+<td><% _.each(d.tags, function(tag){ %>
+  <span class="label label-id-<%- tag.id %> label-name-<%- tag.name %>"><%- tag.name %></span>
+    <%} )%></td>

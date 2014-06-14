@@ -1,0 +1,7 @@
+textarea.edit_anything{
+  position:absolute;
+  overflow:hidden;
+}
+.editable:hover{
+  outline: 1px solid red;
+}

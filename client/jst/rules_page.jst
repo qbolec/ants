@@ -1,0 +1,123 @@
+<h1>Reguły gry</h1>
+<h2>wprowadzenie</h2>
+Chodzi o to by napisać bota, który steruje mrówką.
+Celem gry jest sprowadzanie do kopca pożywienia rozrzuconego po mapie.
+Gra jest turowa i w każdej rundzie każda mrówka ma możliwość wykonać jeden z kilku rodzajów ruchu.
+W grze uczestniczą dwaj gracze: czerwony i niebieski.
+Każdy ma swój kopiec, w którym rodzą się jego mrówki.
+Każda Twoja mrówka będzie postępować wg algorytmu, który napiszesz.
+Trudność leży między innymi w tym, że każda Twoja mrówka będzie myśleć dokładnie wg tego samego schematu, który musi być bardzo precyzyjny i łopatologiczny, bo mrówka ma bardzo mały rozumek i nie rozumie trudnych konceptów.
+<h2>zasady gry</h2>
+Gra jest grą planszową. Plansza ma prostokątny kształt i jest podzielona na W&times;H kwdaratów.
+Konkretne wymiary planszy, ani tym bardziej jej zawartość nie są znane przed rozpoczęciem rozgrywki.
+Graczy jest zawsze dwóch i każdy ma jeden kopiec.
+Nie można budować ani przestawiać kopców.
+Na początku każdy gracz ma 3 okruszki jedzenia i zero punktów.
+Punkt zdobywa się za każdy przyniesiony do kopca okruszek.
+Ilekroć w kopcu jest jedzenie i nie trwa właśnie poród mrówki,
+to jeden okruszek zostaje skonsumowany i rozpoczyna się trwający 3 rundy poród.
+Konsumowanie okruszków nie powoduje straty punktów.
+Nowa mrówka rodzi się na polu kopca.
+Na jednym polu może stać dowolna liczba mrówek.
+Niektóre pola są jednak zajęte przez przeszkody i na tych polach nie może być żadnej mrówki.
+Na niektórych polach leżą okruszki - nie więcej niż 9.
+W każdej rundzie każda mrówka ma możliwość wykonać dokładnie jedną z akcji:
+<ul>
+  <li>pass - czyli nic nie zrobić
+  <li>move UP, move RIGHT, move LEFT, lub move DOWN - czyli pójść na sąsiednie pole (o ile znajduje się ono na planszy i nie ma na nim przeszkody)
+  <li>pick - czyli podnieść okruszek, o ile na polu znajduje się jakiś okruszek, mrówka nie niesie już okruszka i żadna inna mrówka jej w tym nie wyprzedzi (patrz: szczegółowe zasady podnoszenia jedzenia)
+  <li>drop - czyli upuścić niesiony okruszek
+  <li>oprócz tego może też wydzielać feromony - patrz szczegółowe zasady na temat feromonów
+</ul>
+Po ustaleniu co każda mrówka <b>chciałaby</b> zrobić, system ustala co faktycznie <b>udało</b> się mrówkom zrobić, gdyż czasem ich życzenia są sprzeczne (np. walka o jedzenie).
+Po czym wszystkie mrówki wykonują akcje "na raz" i zaczyna się nowa runda.
+Warto zwrócić uwagę, że runda zawsze zaczyna się od rozstrzygnięcia czy urodzić nową mrówkę w kopcu, potem roztrzygnięcia "podniesień" a dopiero na koniec upuszczeń. Oznacza to, że nie można np. począć mrówki z dopiero co upuszczonego jedzenia, albo przekazać jedzenia innej mrówce w jednej rundzie.
+Oprócz tego w każdej rundzie każda mrówka ma możliwość zmienić swój stan hormonalny - patrz: szczegółółowe zasady gospodarki hormonalnej.
+Aby podjąć właściwą decyzję co zrobić, mrówka może badać najbliższe otoczenie następującymi funkcjami w których d może być równe HERE, UP,  RIGHT, DOWN, lub LEFT (stałe te mają odpowiednio wartości 0,1,2,3,4). 
+<ul>
+  <li>isWall d - sprawdza czy w danym kierunku znajduje się ściana lub kraniec mapy 
+  <li>foodCount d - liczy ile okruszków leży na polu w kierunku d. (Okruszki upuszczane na kopcu trafiają od razu do brzucha królowej)
+  <li>friendsCount d - liczy ile Twoich mrówek jest na polu w danym kierunku
+  <li>enemiesCount d - liczy ile mrówek przeciwnika na polu w kierunku d
+  <li>isMyBase d - sprawdza czy sąsiednie pole jest Twoim kopcem
+  <li>isEnemyBase d - sprawdza czy sąsiednie pole jest kopcem przeciwnika
+  <li>smellCommon d, smellVisible d, smellHidden d, smellEnemy d - patrz: gospodarka hormonalna
+</ul>
+Algorytm opisujący proces myślenia mrówki może być dowolnie skomplikowany i można każdą z tych funkcji wywoływać dowolną liczbę razy.
+<h2>szczegółowe zadasady podnoszenia jedzenia</h2>
+Dla każdego pola rozstrzyga się która mrówka podniosła jedzenie a która nie osobno.
+Mrówki które już niosą jedzenie są zupełnie ignorowane.
+Najpierw patrzymy ile mrówek pierwszego gracza, a ile drugiego chciało podnieść coś z tego pola i łączymy je w pary : mrówki te są zajęte przepychaniem, gryzieniem i ogólną bijatyką i żadna z nich nie podniesie jedzenia.
+Niesparowane mrówki podnoszą jedzenie w kolejności od najstarszej do najmłodszej aż do wyczerpania zapasów na danym polu.
+Warto uświadomić sobie, że taką przepychankę wygrać mogą tylko mrówki jednego gracza - albo żadne.
+<h2>szczegółowe zasady na temat feromonów</h2>
+Pole na którym stoi mrówka może zostać oznaczone przez nią fermonem, czyli takim jakby zapachem.
+Feromony nie mają <b>żadnego</b> znaczenia dla samej rozgrywki - nie zdobywa się za nie punktów, nie mogą Cię zabić etc. Służą jedynie do tego, do czego zechcesz aby służyły.
+Do dyspozycji każdego gracza są 3 zapachy:
+<ul>
+  <li>common- to jest feromon, który zostawiać i wyczuć potrafią zarówno Twoje mrówki jak i mrówki przeciwnika
+  <li>visible - to zapach który wytwarzać potrafią tylko Twoje mrówki, ale przeciwnik może go wyczuć
+  <li>hidden - to zapach który jest całkowicie "prywatny". Tylko Twoje mrówki mogą nim oznaczać pole i przeciwnik nie umie wyczuć tego zapachu
+</ul>
+Jako, że jeden feromon jest wspólny, a graczy jest dwóch, mamy więc w naszym świecie 5 zapachów.
+Każde pole ma zatem przypisane 5 liczb oznaczających stężenia każdego z nich.
+Początkowo każde pole ma wyzerowane wszystkie stężenia.
+Aby oznaczyć pole zapachem, mrówka musi zadeklarować, że chce wykonać odpowiednia akcje:
+<ul>
+  <li>sprayCommon x 
+  <li>sprayVisibile x
+  <li>sprayHidden x
+</ul>
+gdzie x to liczba całkowita między 0 a 255 włącznie. Każda z tych akcji powoduje ustawienie odpowiedniego stężenia na dokładnie równe x (w szczególności mrówka potrafi zmniejszyć stężenie zapachu:D).
+Taka akcja wykonywana jest <b>zamiast</b> ruchu.
+Natomiast darmową operacją jest wąchanie pola. Służą do tego następujące funkcje, z których każda przyjmuje kierunek d (czyli HERE,UP,RIGHT,DOWN,lub LEFT) i zwraca całkowitą liczbę z przedziału 0 do 255 włącznie.
+<ul>
+  <li>smellCommon d
+  <li>smellVisible d
+  <li>smellHidden d
+  <li>smellEnemy d
+</ul>
+Ta ostatnia służy do wyczuwania zapachu, który przeciwnik wydziela używając swojej akcji sprayVisible.
+<h2>szczegółowe zasady gospodarki hormonalnej</h2>
+Podobnie jak feromony służą graczom do zostawiania informacji na polach, hormony pozwalają przechować informacje wewnątrz samej mrówki.
+Hormony również nie mają <b>żadnego</b> wpływu na mechanikę gry - mrówka nie stanie się od nich silniejsza, ani nie może ich przedawkować. To do czego Ci one służą zależy tylko od Twojej pomysłowości.
+Każda mrówka ma trzy hormony, nazywane r, g oraz b.
+Początkowo, gdy mrówka się rodzi mają one zerowe stężenie.
+Maksymalne stężenie każdego z nich to 255.
+Hormony są wewnątrz mrówki i są jej prywatną sprawą - nie da się "obwąchać" innej mrówki by zobaczyć co ma w środku.
+Jako twórca mrówki, masz poprzez pisany algorytm pełną kontrolę nad stanami hormonów mrówki, tj. wiesz jakie są ich stężenia na początku rundy i masz podać 3 nowe stężenia jakie ma mieć mrówka na koniec rundy. 
+<h2>kwestie techniczne programowania</h2>
+Programujemy w języku <a href="http://github.com/qbolec/sexp">sexp</a>, który jest językiem funkcjonalnym.
+Co gorsza, jest językiem funkcjonalnym w którym nie ma rekurencji, co oznacza, że każdy program który napiszesz działa w czasie stałym. Dlatego nie krępuj się i twórz dowolnie skomplikowane "ifowiska".
+Typem napisanej przez Ciebie funkcji powinno być:
+<pre>
+{r:byte,g:byte,g:byte,food:bool} -> {action:Action,hormones:{r:byte,g:byte,b:byte}}
+</pre>
+Aby utworzyć obiekt typu Action musisz użyć jednego z predefiniowanych wyrażeń:
+<ul>
+  <li>pass - ma typ Action
+  <li>move - ma typ number -> Action
+  <li>pick - ma typ Action
+  <li>drop - ma type Action
+  <li>sprayCommon - ma typ number -> Action
+  <li>sprayVisible - ma typ number -> Action
+  <li>sprayHidden - ma typ number -> Action
+</ul>
+<h2>open source</h2>
+Możesz zadecydować czy życzysz sobie by Twój program był widoczny dla pozostałych użytkowników czy nie.
+Oczywiście ciężko wykluczyć sytuacje, w której ktoś zreverse engineeruje Twoje rozwiązanie nawet jeśli sobie tego nie życzysz.
+Jak w życiu.
+<h1>Inspiracje</h1>
+Oto kilka pomysłów które mogą Cię zainspirować:
+<ul>
+  <li>spróbuj użyć hormonów jako GPSa : np. r to współrzędna x, zaś g to współrzędna y
+  <li>spróbuj użyć jednego z hormonów jako informacji o tym jak daleko jesteś od bazy
+  <li>spróbuj użyć jednego z hormonów by pamiętać po której stronie masz "rękę" "idąc wzdłuż ściany"
+  <li>spróbuj użyć stężenia feromonów by oznakować odległość od bazy, albo od jedzenia. Albo kierunek do bazy.
+  <li>3x256 to 24 bity informacji. Spróbuj zapamiętać ostatnich 12 zakrętów na drodze do domu
+  <li>spróbuj "pogadać": jedna mrówka może "zdumpować" hormony na feromony a druga je podem "zloadować"
+  <li>spróbuj pójść na wspólpracę z przeciwnikiem: gra nie jest grą o sumie zerowej, więc możecie użyć wspólnych zapachów i "protokołu" by pomóc sobie znaleźć jedzenie
+  <li>spróbuj wyspecjalizować swoje mrówki: np. odpowiednim hormonem możesz kodować "kastę" mrówki, a odpowiednim feromonem na polu bazy kodować jakiej mrówki potrzebujesz.
+  <li>spróbuj zrobić DFSa używając pól mapy jako stosu
+  <li>a może da radę zrobić BFSa mając kilka mrówek dedykowanych do "pielęgnowania" gradientu stężeń feromonó i "relaksowania" krawędzi tak by zawsze znać najkrótszą ścieżkę do jedzenia/bazy?
+</ul>

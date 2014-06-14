@@ -1,0 +1,10 @@
+<p class="reason"><%= Texts.get('help/reason/movie.html',d.helped) %></p>
+<div class="thumbnail"><span class="glyphicon glyphicon-play-circle"></span></div>
+<div class="title"><span class="text"><%- d.title%></span><span class="shadow_cropper"></span></div>
+<p class="source"><span class="source">źródło:</span>
+<%- d.source.user.nick %>
+<% _.each(d.source.user.badges,function(badge){ %>
+  <span class="badge" title="<%- badge.title%>"><%- badge.name %></span>
+<% }) %>
+</p>
+<div class="duration"><%- d.duration%></div>

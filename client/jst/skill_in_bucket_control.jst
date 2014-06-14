@@ -1,0 +1,8 @@
+<label><input type="checkbox">
+<span class="id"><%- d.skill.id %></span> <span class="name"><%- d.skill.name %></span>
+<ul>
+<% _.each(d.materials_ids, function(material_id){ %>
+  <li><%- material_id %></li>
+<% }); %>
+</ul>
+</label>

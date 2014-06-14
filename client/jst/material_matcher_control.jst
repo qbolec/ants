@@ -1,0 +1,15 @@
+<span class="id"><%- d.material.id %></span>
+<span class="title"><%- d.material.title %></span>
+<span class="description"><%- d.material.description %></span>
+<a class="link" href="http://www.youtube.com/watch?v=<%- d.material.youtube_id %>"><%- Texts.get('material/video/watch')%></a>
+<ul>
+<% _.each(d.skills_ids, function(skill_id){ %>
+  <li><%- skill_id %></li>
+<% }); %>
+</ul>
+<div>
+  <span class="into_buckets"><%- Texts.get('into_buckets/label') %></span>
+  <% for(var i=1;i<=3;++i){ %>
+  <button class="btn btn-default into_bucket bucket-<%- i %>">#<%- i %></button>
+  <% } %>
+</div>
