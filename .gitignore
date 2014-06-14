@@ -1,0 +1,4 @@
+client/jst/*.ts
+client/css/main.css
+client/js/app.js
+server/php/config/
